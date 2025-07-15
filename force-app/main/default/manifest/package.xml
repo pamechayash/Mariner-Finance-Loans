@@ -21,8 +21,7 @@
         <members>Account.SSN__c</members>
                  <members>Account.Loan_Number__c</members>
                 <members>Account.MarinerExternalId__c</members>
-                              
-                                <members>DocumentChecklistItem.User_Name__c</members>
+                <members>DocumentChecklistItem.User_Name__c</members>
                                   <members>DocumentChecklistItem.MarinerExternalID__c</members>
        <members>DocumentChecklistItem.LastDownloadDate__c</members>
               <members>DocumentChecklistItem.File_Size__c</members>
