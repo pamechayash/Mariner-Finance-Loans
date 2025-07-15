@@ -1,0 +1,79 @@
+<template>       
+    <lightning-card title={titleWithCount} icon-name="standard:record">
+        <div slot="footer">
+            <div  if:true={countBool}>
+                <lightning-button variant="base" label="View All"    onclick={openDataTableTab}></lightning-button>
+            </div>
+        </div> 
+        <div class="slds-m-around_medium">   
+           <div if:true={top3}>  
+               <template for:each={top3} for:item="rec"> 
+                    <div key={rec.title} class="details" style="margin-bottom: 10px;">
+                    <a onclick={handleTitleClick} data-id={rec.Id}>{rec.title}</a>
+                    <div style="display:flex;gap:10px">
+                    <div class="detailHeads">
+                     
+                     <div class="detailhead">Source</div>
+                     <div class="detailhead">Status</div>
+                    </div>
+                    <div class="valueHeads">
+                  
+                        <div class="valuehead">{rec.source}</div>
+                        <div class="valuehead">{rec.status}</div>
+                    </div>
+                </div>
+                </div>  
+                 </template>    
+            </div>  
+        </div>   
+    </lightning-card>  
+    
+
+        <template if:true={isOpen}>
+            <section role="dialog" tabindex="-1" class="slds-modal slds-fade-in-open">
+                <div class="slds-modal__container">
+                    <header class="slds-modal__header">
+                        <h2 class="slds-modal__title">Application Details</h2>
+                    </header>
+    
+                    <div class="slds-modal__content slds-p-around_medium">
+                        <p><strong>Status:</strong> {selectedApp.status}</p>
+                    
+                        <p><strong>SSN:</strong> {selectedApp.ssn}</p>
+                        <p><strong>Promo Code:</strong> {selectedApp.promoCode}</p>
+                        <p><strong>Date Submitted:</strong> {selectedApp.dateSubmitted}</p>
+                        <p><strong>Branch:</strong> {selectedApp.branchNumber} - {selectedApp.branchName}</p>
+    
+  
+                            <div class="slds-box slds-m-top_medium">
+                                <h3 class="slds-text-heading_small">Selected Offer</h3>
+                                <p><strong>Amount:</strong> {selectedApp.amount}</p>
+                                <p><strong>Term:</strong> {selectedApp.term} months</p>
+                                <p><strong>Rate:</strong> {selectedApp.rate}%</p>
+                                <p><strong>APR:</strong> {selectedApp.apr}%</p>
+                                <p><strong>Fee:</strong> {selectedApp.fee}</p>
+                            </div>
+                            <div class="slds-box slds-m-top_medium">
+                                <h3 class="slds-text-heading_small">Applicant Notes</h3>
+                   
+                                    <div  class="slds-m-bottom_small">
+                                        <p><strong>Title:</strong> {selectedApp.title}</p>
+                                        <p><strong>Content:</strong> {selectedApp.notes}</p>
+                                        <p><strong>Type:</strong> {selectedApp.type}</p>
+                                        <p><strong>Status:</strong> {selectedApp.status}</p>
+                                        <p><strong>Source:</strong> {selectedApp.source}</p>
+                                        <p><strong>Created:</strong> {selectedApp.createdDate}</p>
+                                    </div>
+
+                            </div>
+
+                    </div>
+    
+                    <footer class="slds-modal__footer">
+                        <button class="slds-button slds-button_neutral" onclick={closeModal}>Close</button>
+                    </footer>
+                </div>
+            </section>
+            <div class="slds-backdrop slds-backdrop_open"></div>
+        </template>
+</template>

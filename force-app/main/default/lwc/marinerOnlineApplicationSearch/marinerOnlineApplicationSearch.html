@@ -1,0 +1,138 @@
+<template>
+    <div class="slds-theme_default mainContainer">
+
+        <!-- Header -->
+        <div class="slds-grid slds-theme_info slds-p-around_medium slds-border_bottom headerCover">
+            <div class="slds-col slds-size_1-of-12">
+                <span class="slds-icon_container slds-icon-utility-form" title="form icon">
+                    <lightning-icon icon-name="utility:form" alternative-text="Form" size="medium"></lightning-icon>
+                </span>
+            </div>
+            <div class="slds-col slds-size_11-of-12 slds-text-align_center">
+                <h2 class="slds-text-heading_medium slds-text-color_inverse">{pageTitle}</h2>
+            </div>
+        </div>
+
+
+        <!-- Instruction -->
+        <div class="slds-p-around_medium">
+            <p class="slds-text-body_regular">
+                {description}
+
+                <lightning-button label="None of these are correct" variant="base" if:true={showExternalCall}
+                    onclick={handleExternalSearch}>
+
+                </lightning-button>
+
+            </p>
+        </div>
+        <template if:true={isCustomerSearchPage}>
+            <!-- Input Grid -->
+            <div class="slds-p-horizontal_medium slds-grid slds-wrap slds-gutters">
+                <template for:each={inputFields} for:item="field">
+                    <div key={field} class="slds-col slds-size_1-of-2 slds-p-vertical_x-small">
+                        <lightning-input name={field} onchange={handleChange} variant="label-hidden"
+                            placeholder={field}></lightning-input>
+                    </div>
+
+                </template>
+                <div class="slds-col slds-size_1-of-1 slds-m-vertical_medium" style="text-align: center;">
+                    <lightning-button label="Search" variant="brand" onclick={handleSearch}></lightning-button>
+
+
+
+                </div>
+            </div>
+
+
+
+        </template>
+
+
+        <template if:true={showCustomers}>
+            <div class="custom-table">
+                <!-- Header -->
+                <div class="header-row slds-text-title_caps">
+                    <template for:each={columns} for:item="column">
+                        <div key={column.label}>{column.label}</div>
+                    </template>
+
+                </div>
+
+                <!-- Rows -->
+                <template for:each={pageSlice} for:item="customer" for:index="index">
+
+                    <div key={customer.Id} class="data-row">
+                        <div class="slds-truncate">{customer.Name}</div>
+                        <div class="slds-truncate">{customer.Email__c}</div>
+
+                        <div class="slds-truncate">{customer.Phone}</div>
+                        <div class="slds-truncate">{customer.SSN__c}</div>
+                        <div class="slds-truncate">{customer.DateOfBirth}</div>
+
+                        <div class="slds-truncate">{customer.BillingAddress}</div>
+                        <div class="slds-truncate">{customer.recordLink}</div>
+                    </div>
+                    <div key={customer.Id} class="action-row">
+                        <div class="slds-button slds-button_icon viewButton" data-key={customer.Email__c}
+                            data-id={customer.Id} onclick={handleUpClick}>
+
+                            <lightning-icon data-id={customer.keyUp} style="display:none" icon-name="utility:chevronup"
+                                size="x-small" alternative-text="Up" title="Up"></lightning-icon>
+                            <lightning-icon data-id={customer.keyDown} style="display:block;"
+                                icon-name="utility:chevrondown" size="x-small" alternative-text="Up"
+                                title="Up"></lightning-icon>
+                            <strong>View Applications</strong>
+
+                        </div>
+
+
+
+                    </div>
+
+
+                    <div key={customer.Id} style="display:block;" data-id={customer.keyDown} data-key={customer.Id}
+                        class="appTable">
+                        <div class="app-header-row slds-text-title_caps">
+
+                            <template for:each={applicationsColumns} for:item="application">
+                                <div key={application.Id}>{application.label}</div>
+                            </template>
+                        </div>
+                        <template for:each={customer.applications} for:item="app">
+                            <div key={app.Id} class="app-data-row">
+                                <div class="slds-truncate">{app.type}</div>
+                                <div class="slds-truncate">{app.notes}</div>
+
+                                <div class="slds-truncate">{app.username}</div>
+                                <div class="slds-truncate">{app.createdDate}</div>
+                                <div class="slds-truncate">{app.updatedDate}</div>
+
+                                <div class="slds-truncate">{app.title}</div>
+                                <div class="slds-truncate">{app.source}</div>
+                                <div class="slds-truncate">{app.verificationProgress}</div>
+                                <div class="slds-truncate">{app.status}</div>
+                                <div class="slds-truncate">{app.branchNumber}</div>
+                                <div class="slds-truncate">{app.branchName}</div>
+                                <div class="slds-truncate">{app.loanInfo}</div>
+                            </div>
+                        </template>
+                    </div>
+                </template>
+
+            </div>
+
+            <div class="slds-m-top_medium pagination">
+                <lightning-button label="Previous" onclick={handlePrevious}
+                    disabled={isPrevDisabled}></lightning-button>
+                <span class="slds-m-horizontal_medium">
+                    Page {currentPage} of {totalPages}
+                </span>
+                <lightning-button label="Next" onclick={handleNext} disabled={isNextDisabled}></lightning-button>
+            </div>
+        </template>
+
+
+
+    </div>
+</template>

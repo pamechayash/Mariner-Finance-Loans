@@ -1,0 +1,34 @@
+.slds-card__header{
+    background: rgb(201, 201, 201) !important;
+}
+.body{
+    padding: 10px;
+    border-top: 1px solid gray;
+    border-bottom: 1px solid gray;
+    margin:0px
+}
+.header{
+    padding-left: 10px;
+    font-size: 1.1rem;
+    font-weight: bold;
+    background-color: rgb(243 243 243);
+}
+.details{
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+
+}
+.detailHeads{
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+    font-weight: 600;
+    width: 120px;
+}
+.valueHeads{
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+    width: 120px;
+}

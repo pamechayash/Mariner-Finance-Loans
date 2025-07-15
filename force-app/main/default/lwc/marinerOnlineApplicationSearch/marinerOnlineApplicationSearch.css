@@ -1,0 +1,114 @@
+.custom-table {
+    display: flex;
+   flex-direction: column;
+    border: 1px solid #dddbda;
+}
+
+.header-row, .data-row {
+    display: flex;
+    flex-wrap: nowrap;
+
+  
+    border-top: 1px solid #dddbda; 
+    justify-content: space-evenly;
+}
+.header-row{
+    background-color: #6cb1ff;
+
+
+}
+.header-row > div {
+
+    padding: 0.5rem;
+    font-weight: bold;
+    font-size: 0.7rem;
+    width: 100px;
+    max-width: 150px;
+    
+    color: white;
+}
+.app-header-row{
+    background-color: #6cb1ff;
+    display: flex;
+    font-size: 0.7rem;
+    flex-wrap: nowrap;
+
+
+    border-bottom: 1px solid #dddbda; 
+}
+.app-header-row > div{
+    padding: 0.05rem;
+    min-width: 65px;
+    width: 110px;
+    font-weight: bold;
+    text-align: center;
+    white-space: wrap;
+    word-wrap: break-word;
+    font-size: 0.7rem;
+    border-left: 1px solid black;
+    border-right: 1px solid black;
+    color: white;
+}
+.data-row > div {
+    padding: 0.5rem;
+
+    white-space: wrap;
+    font-size: 0.8rem;
+    width: 100px;
+ max-width: 150px;
+}
+
+.app-data-row{
+    display: flex;
+    flex-wrap: nowrap;
+
+  
+    border-bottom: 1px solid #dddbda; 
+
+}
+.pagination{
+    text-align: center;
+    margin: 10px 0px;
+}
+.viewButton{
+    display: flex;
+    gap:5px;
+}
+.headerCover{
+    border-radius: 5px; 
+    background-color: #6cb1ff;
+}
+.mainContainer{
+    border: 1px solid black;
+     border-radius: 5px;
+}
+.app-data-row > div {
+    padding: 0.05rem;
+    white-space: wrap;
+    word-wrap: break-word;
+    white-space: wrap;
+    min-width: 65px;
+    width: 110px;
+    font-size: 0.8rem;
+
+}
+
+.action-row {
+    grid-column: 1 / -1;
+    display: flex;
+    gap: 0.5rem;
+    margin: 10px 0px;
+    padding: 0.25rem 0.5rem;
+   
+}
+.upArrow{
+    display: none;
+}
+.appTable{
+    display: flex;
+    flex-direction: column;
+    border: 1.5px solid black;
+    max-width: 1323px;
+    margin: 0px 7px;
+    margin-bottom: 20px;
+}
